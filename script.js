@@ -1,10 +1,9 @@
-// script.js
 function calculateAttendance() {
     let subject = document.getElementById("subject").value;
     let totalSessions = parseInt(document.getElementById("totalSessions").value);
     let attended = parseInt(document.getElementById("attended").value);
     let absent = parseInt(document.getElementById("absent").value);
-    
+
     if (isNaN(totalSessions) || isNaN(attended) || isNaN(absent) || subject === "") {
         document.getElementById("result").innerText = "⚠️ Please enter all values correctly.";
         return;
@@ -15,16 +14,17 @@ function calculateAttendance() {
     let moreClassesNeeded = requiredAttendance - attended;
     let remainingSessions = totalSessions - (attended + absent);
     
-    let message = `📚 Current attendance percentage in ${subject}: ${percentage.toFixed(2)}%
-`;
+    let message = `Current ${subject} percentage :  ${percentage.toFixed(2)}%\n`;
     
     if (percentage >= 75) {
-        message += "✅ You are already eligible!";
+        message += "You are already eligible! ✅";
     } else if (moreClassesNeeded <= remainingSessions) {
-        message += `⚠️ You need to attend ${moreClassesNeeded} more ${subject} classes to reach 75%.`;
+        message += `⚠️ Attend ${moreClassesNeeded} more ${subject} classes to reach 75%`;
     } else {
         message += "❌ Not Eligible for exams. Even if you attend all remaining classes, you can't reach 75%.";
     }
     
     document.getElementById("result").innerText = message;
 }
+
+
